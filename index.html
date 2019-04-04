@@ -1,20 +1,182 @@
 <html>
-    <head>
-        <title>Parque de Diversiones</title>
-            <style>
-                canvas {
-                width: 100%;
-                height: 100%;
-              }
-              body {
-                margin: 0;
-              }
-            </style>
-    </head>
-    <body>
-        <script src="three.min.js"></script>
-        <script>
-            window.addEventListener("keydown", doKeyDown, true);
-        </script>
-    </body>
+  <head>
+    <title>Parque de Diversiones</title>
+    <style>
+      canvas {
+        width: 100%;
+        height: 100%;
+      }
+      body {
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <script src="three.min.js"></script>
+    <script>
+      window.addEventListener("keydown", doKeyDown, true);
+      // agregamos el "listener" para "escuchar" los eventos del teclado
+
+      var zpos = 50;
+      var xpos = 0;
+      var ypos = 0;
+      var x = 0.0;
+      var y = 0.0;
+      var z = 0.0;
+      var xx = 0.0;
+      var yy = 0.0;
+      var zz = 0.0;
+      var angle = 0;
+      var rotEntiereArm = 0;
+      var rotXEntiereArm = 0;
+      var rotXForeArm = 0;
+      var openFinger = 1.3;
+      var openFinger2 = -1.3;
+      var rotHand = 0;
+
+      function doKeyDown(evt) {
+
+        switch (evt.keyCode) {
+
+          //Camera
+          case 38 /* Up arrow was pressed */:
+            zpos= (zpos-(0.8*Math.cos(ypos))); 
+            xpos= (xpos-(0.8*Math.sin(ypos)));
+            break;
+          case 40 /* Down arrow was pressed */:
+            zpos= (zpos+(0.8*Math.cos(ypos)));
+            xpos= (xpos+(0.8*Math.sin(ypos)));
+            break;
+          case 37 /* Left arrow was pressed */:
+            ypos += 0.05;
+            break;
+          case 39 /* Right arrow was pressed */:
+            ypos -= 0.05;
+            break;
+
+          //Camera WASD
+          case 87:  /* W was pressed */
+            zpos= (zpos-(0.8*Math.cos(ypos))); 
+            xpos= (xpos-(0.8*Math.sin(ypos)));                        
+            break;
+          case 83:  /* S was pressed */
+            zpos= (zpos+(0.8*Math.cos(ypos)));
+            xpos= (xpos+(0.8*Math.sin(ypos)));                        
+            break;
+          case 68:  /* D was pressed */
+            ypos -= 0.05;         
+            break;
+          case 65:  /* A was pressed */
+            ypos += 0.05;         
+            break;
+
+          //Entiere Arm
+          case 84:  /* T was pressed */
+            rotEntiereArm += 0.1;         
+            break; 
+          case 71:  /* G was pressed */
+            rotEntiereArm -= 0.1;         
+            break; 
+          case 82:  /* R was pressed */
+           if(rotXEntiereArm<0.9)
+            rotXEntiereArm += 0.1;         
+            break; 
+          case 70:  /* F was pressed */
+          if(rotXEntiereArm>-0.9)
+            rotXEntiereArm -= 0.1;         
+            break; 
+          case 89:  /* Y was pressed */
+             rotXForeArm += (0.05);         
+            break; 
+          case 72:  /* H was pressed */
+            rotXForeArm -= (0.05);         
+            break; 
+          //Manita
+          case 73://U
+            if(openFinger<1.5 && openFinger2>-1.5){
+              openFinger += 0.1;
+              openFinger2 -= 0.1;
+            }
+            break;
+          
+          case 75://J
+          if(openFinger>0.7 && openFinger2<-0.7){
+              openFinger -= 0.1;
+              openFinger2 += 0.1;
+            }
+            break;
+          case 85://I
+          if(rotHand<1.5){
+            rotHand += 0.1;
+          }
+          break;
+          case 74://K
+          if(rotHand>1.5){
+            rotHand -= 0.1;
+          }
+        }
+      }
+
+      // three basic components of a scene
+      var scene = new THREE.Scene();
+      var camera = new THREE.PerspectiveCamera(
+        75,
+        window.innerWidth / window.innerHeight,
+        0.01,
+        1000
+      );
+      var renderer = new THREE.WebGLRenderer();
+
+      // create a new geometry
+      var geom = new THREE.Geometry();
+
+      // create a Lambert material
+      var LambertMaterial = new THREE.MeshLambertMaterial({
+        color: 0xc0c0c0
+        });
+
+      // create a wireframe material
+      var meshMaterial = new THREE.MeshBasicMaterial({
+        color: 0xC0C0C0,
+        wireframe: true
+      });
+      
+      // add the group to the scene
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      document.body.appendChild(renderer.domElement);
+
+      // create some point lights
+      var pointLight = new THREE.PointLight(0xffffff);
+      var pointLight2 = new THREE.PointLight(0xffffff);
+
+      // set its position
+      pointLight.position.x = 10;
+      pointLight.position.y = 50;
+      pointLight.position.z = 130;
+
+      // add to the scene
+      scene.add(pointLight);
+
+      // set its position
+      pointLight2.position.x = 10;
+      pointLight2.position.y = -50;
+      pointLight2.position.z = -130;
+
+      // add to the scene
+      scene.add(pointLight2);
+
+      // set the background color
+      renderer.setClearColor(0x2271B3, 1);
+
+      var render = function() {
+        requestAnimationFrame(render);
+        camera.position.z = zpos; 
+        camera.position.x = xpos;
+        camera.rotation.y = ypos;
+      
+        renderer.render(scene, camera);
+      };
+      render();
+    </script>
+  </body>
 </html>
