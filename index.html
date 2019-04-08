@@ -201,6 +201,7 @@
       // create some point lights
       var pointLight = new THREE.PointLight(0xffffff);
       var pointLight2 = new THREE.PointLight(0xffffff);
+      var pointLight3 = new THREE.PointLight(0xffffff);
 
       // set its position
       pointLight.position.x = 10;
@@ -290,8 +291,9 @@
 
       // set its position
       pointLight2.position.x = 10;
-      pointLight2.position.y = -50;
-      pointLight2.position.z = -130;
+      pointLight2.position.y = 50;
+      pointLight2.position.z = 300;
+      scene.add(pointLight2);
 
       estructura = new THREE.Object3D();
       estructura.add(tubo);
