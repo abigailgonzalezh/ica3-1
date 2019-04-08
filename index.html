@@ -180,6 +180,7 @@
       var supportTube = new THREE.Mesh(rotatingSupport, yellowMetal);
       var supportTube2 = new THREE.Mesh(rotatingSupport, yellowMetal);
       var supportTube3 = new THREE.Mesh(rotatingSupport, yellowMetal);
+      var supportTube4 = new THREE.Mesh(rotatingSupport, yellowMetal);
       
       var tubo8 = new THREE.Mesh(tuboRueda, blackMetal);
       var tubo9 = new THREE.Mesh(tuboRueda, blackMetal);
@@ -260,6 +261,11 @@
         supportTube3.position.y = 80;
         supportTube3.position.z = 168.5;
         supportTube3.rotation.x = -60;
+        supportTube4.position.x = -12;
+        supportTube4.position.y = 80;
+        supportTube4.position.z = 168.5;
+        supportTube4.rotation.x = -60;
+
        
 
         
@@ -330,6 +336,7 @@
       frisbeeTube.add(supportTube);
       frisbeeTube.add(supportTube2);
       frisbeeTube.add(supportTube3);
+      frisbeeTube.add(supportTube4);
 
       // add to the scene
       scene.add(pointLight2);
