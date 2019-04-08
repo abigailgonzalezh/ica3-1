@@ -130,6 +130,8 @@
       // create a new geometry
       var geom = new THREE.Geometry();
       var floor = new THREE.BoxGeometry( 300, 1, 300 );
+      var baseStructure = new THREE.CylinderGeometry(5,5,100,100);
+      var tuboAcostado = new THREE.CylinderGeometry(10,10,60,100);
 
       // create a Lambert material
       var LambertMaterial = new THREE.MeshLambertMaterial({
@@ -143,8 +145,15 @@
       });
 
       var pasto = new THREE.MeshLambertMaterial ({map: THREE.ImageUtils.loadTexture("pasto.jpg")});
+      var metal = new THREE.MeshLambertMaterial ({map: THREE.ImageUtils.loadTexture("metal.jpg")});
 
       var base = new THREE.Mesh(floor, pasto);
+
+      var tubo = new THREE.Mesh(baseStructure, metal);
+      var tubo2 = new THREE.Mesh(baseStructure, metal);
+      var tubo3 = new THREE.Mesh(tuboAcostado, metal);
+      var tubo4 = new THREE.Mesh(baseStructure, metal);
+      var tubo5 = new THREE.Mesh(baseStructure, metal);
       
       // add the group to the scene
       renderer.setSize(window.innerWidth, window.innerHeight);
@@ -169,9 +178,17 @@
       pointLight2.position.y = -50;
       pointLight2.position.z = -130;
 
+      estructura = new THREE.Object3D();
+      estructura.add(tubo);
+      estructura.add(tubo2);
+      estructura.add(tubo3);
+      estructura.add(tubo4);
+      estructura.add(tubo5);
+
       // add to the scene
       scene.add(pointLight2);
       scene.add(base); 
+      scene.add(estructura);
 
       // set the background color
       renderer.setClearColor(0x2271B3, 1);
@@ -181,6 +198,19 @@
         camera.position.z = zpos; 
         camera.position.x = xpos;
         camera.rotation.y = ypos;
+
+        tubo.rotation.z = 60;
+        tubo2.rotation.z = -60;
+        tubo2.position.x = -42;
+        tubo3.rotation.x = 190;
+        tubo3.position.y = 50;
+        tubo3.position.x = -22;
+        tubo3.position.z = -25;
+        tubo4.rotation.z = 60;
+        tubo4.position.z = -48;
+        tubo5.position.z = -48;
+        tubo5.rotation.z = -60;
+        tubo5.position.x = -42;
       
         renderer.render(scene, camera);
       };
