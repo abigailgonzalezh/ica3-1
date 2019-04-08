@@ -40,12 +40,12 @@
 
           //Camera
           case 38 /* Up arrow was pressed */:
-            zpos= (zpos-(0.8*Math.cos(ypos))); 
-            xpos= (xpos-(0.8*Math.sin(ypos)));
+            zpos= (zpos-(2*Math.cos(ypos))); 
+            xpos= (xpos-(2*Math.sin(ypos)));
             break;
           case 40 /* Down arrow was pressed */:
-            zpos= (zpos+(0.8*Math.cos(ypos)));
-            xpos= (xpos+(0.8*Math.sin(ypos)));
+            zpos= (zpos+(2*Math.cos(ypos)));
+            xpos= (xpos+(2*Math.sin(ypos)));
             break;
           case 37 /* Left arrow was pressed */:
             ypos += 0.05;
