@@ -56,12 +56,14 @@
 
           //Camera WASD
           case 87:  /* W was pressed */
-            zpos= (zpos-(0.8*Math.cos(ypos))); 
-            xpos= (xpos-(0.8*Math.sin(ypos)));                        
+            //zpos= (zpos-(0.8*Math.cos(ypos))); 
+            //xpos= (xpos-(0.8*Math.sin(ypos)));   
+            camera.position.y += 0.5;                       
             break;
           case 83:  /* S was pressed */
-            zpos= (zpos+(0.8*Math.cos(ypos)));
-            xpos= (xpos+(0.8*Math.sin(ypos)));                        
+            //zpos= (zpos+(0.8*Math.cos(ypos)));
+            //xpos= (xpos+(0.8*Math.sin(ypos)));
+            camera.position.y -= 0.5;                                                
             break;
           case 68:  /* D was pressed */
             ypos -= 0.05;         
@@ -129,9 +131,10 @@
 
       // create a new geometry
       var geom = new THREE.Geometry();
-      var floor = new THREE.BoxGeometry( 300, 1, 300 );
+      var floor = new THREE.BoxGeometry( 300, 10, 300 );
       var baseStructure = new THREE.CylinderGeometry(5,5,100,100);
       var tuboAcostado = new THREE.CylinderGeometry(10,10,60,100);
+      var tuboRueda = new THREE.CylinderGeometry(2,2,30,30);
 
       // create a Lambert material
       var LambertMaterial = new THREE.MeshLambertMaterial({
@@ -146,14 +149,18 @@
 
       var pasto = new THREE.MeshLambertMaterial ({map: THREE.ImageUtils.loadTexture("pasto.jpg")});
       var metal = new THREE.MeshLambertMaterial ({map: THREE.ImageUtils.loadTexture("metal.jpg")});
+      var blackMetal = new THREE.MeshLambertMaterial ({map: THREE.ImageUtils.loadTexture("blackmetal.jpg")});
 
       var base = new THREE.Mesh(floor, pasto);
 
       var tubo = new THREE.Mesh(baseStructure, metal);
       var tubo2 = new THREE.Mesh(baseStructure, metal);
-      var tubo3 = new THREE.Mesh(tuboAcostado, metal);
       var tubo4 = new THREE.Mesh(baseStructure, metal);
       var tubo5 = new THREE.Mesh(baseStructure, metal);
+
+      var tubo3 = new THREE.Mesh(tuboAcostado, metal); 
+      var tubo6 = new THREE.Mesh(tuboRueda, blackMetal);
+      var tubo7 = new THREE.Mesh(tuboRueda, blackMetal);
       
       // add the group to the scene
       renderer.setSize(window.innerWidth, window.innerHeight);
@@ -170,35 +177,6 @@
 
       base.position.y=-10; base.position.x = 0; base.position.z = 15;
 
-      // add to the scene
-      scene.add(pointLight);
-
-      // set its position
-      pointLight2.position.x = 10;
-      pointLight2.position.y = -50;
-      pointLight2.position.z = -130;
-
-      estructura = new THREE.Object3D();
-      estructura.add(tubo);
-      estructura.add(tubo2);
-      estructura.add(tubo3);
-      estructura.add(tubo4);
-      estructura.add(tubo5);
-
-      // add to the scene
-      scene.add(pointLight2);
-      scene.add(base); 
-      scene.add(estructura);
-
-      // set the background color
-      renderer.setClearColor(0x2271B3, 1);
-
-      var render = function() {
-        requestAnimationFrame(render);
-        camera.position.z = zpos; 
-        camera.position.x = xpos;
-        camera.rotation.y = ypos;
-
         tubo.rotation.z = 60;
         tubo2.rotation.z = -60;
         tubo2.position.x = -42;
@@ -211,7 +189,52 @@
         tubo5.position.z = -48;
         tubo5.rotation.z = -60;
         tubo5.position.x = -42;
-      
+
+        tubo6.position.y=40; tubo6.position.x = 0; tubo6.position.z = -18;
+        tubo7.position.y=40; tubo7.position.x = 0; tubo7.position.z = -31; 
+        tubo6.rotation.z=1;
+        tubo7.rotation.z=1;          
+        
+
+      // add to the scene
+      scene.add(pointLight);
+
+      // set its position
+      pointLight2.position.x = 10;
+      pointLight2.position.y = -50;
+      pointLight2.position.z = -130;
+
+      estructura = new THREE.Object3D();
+      estructura.add(tubo);
+      estructura.add(tubo2);
+      estructura.add(tubo4);
+      estructura.add(tubo5);
+      estructura.position.y=35;
+
+      aro = new THREE.Object3D();
+      aro.add(tubo3);
+      aro.add(tubo6);
+      aro.add(tubo7);
+      aro.position.y=35;
+
+      // add to the scene
+      scene.add(pointLight2);
+      scene.add(base); 
+      scene.add(estructura);
+      scene.add(aro);
+
+      // set the background color
+      renderer.setClearColor(0x2271B3, 1);
+
+      var render = function() {
+        requestAnimationFrame(render);
+        camera.position.z = zpos; 
+        camera.position.x = xpos;
+        camera.rotation.y = ypos;
+
+        tubo3.rotation.y += 0.01;
+        //aro.rotation.z+=0.01;
+
         renderer.render(scene, camera);
       };
       render();
