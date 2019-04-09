@@ -223,6 +223,9 @@
       var supportTube = new THREE.Mesh(rotatingSupport, yellowMetal);
       var supportTube2 = new THREE.Mesh(rotatingSupport, yellowMetal);
       var supportTube3 = new THREE.Mesh(rotatingSupport, yellowMetal);
+      var topBase2 = new THREE.Mesh(baseFrisbee, yellowMetal);
+      var tube3 = new THREE.Mesh(baseStructure, pinkMetal);
+      var tube4 = new THREE.Mesh(baseStructure, pinkMetal);
 
       // add the group to the scene
       renderer.setSize(window.innerWidth, window.innerHeight);
@@ -336,8 +339,17 @@
         holdCircle4.position.y = 16;
         holdCircle4.position.z = 148;
         holdCircle4.rotation.x = 70;
-
-
+        topBase2.position.z = 115;
+        topBase2.position.x = -86;
+        topBase2.position.y = 82;
+        tube3.rotation.x = 60;
+        tube3.position.z = 85;
+        tube3.position.x = -75;
+        tube3.position.y = 36;
+        tube4.rotation.x = -60;
+        tube4.position.z = 145;
+        tube4.position.x = -75;
+        tube4.position.y = 36;
        
       // add to the scene
       scene.add(pointLight);
@@ -389,6 +401,9 @@
       frisbeeTube.add(holdCircle3);
       frisbeeTube.add(holdCircle4);
       frisbee.add(frisbeeTube);
+      frisbee.add(topBase2);
+      frisbee.add(tube3);
+      frisbee.add(tube4);
 
       // add to the scene
       scene.add(pointLight2);
