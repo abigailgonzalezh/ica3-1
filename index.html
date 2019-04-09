@@ -141,6 +141,7 @@
       var rotatingSupport = new THREE.CylinderGeometry(2,2,7,100);//tubos que juntan a la base con el otro tubo
       var sostiene = new THREE.CylinderGeometry(10,3,40,100);//brazo del juego
       var sostiene2 = new THREE.CylinderGeometry(3,10,20,100);//union entre el brazo y el circulo
+      var rueda1 = new THREE.TorusGeometry(60,5,5,100);//rueda de la rueda
       var rueda = new THREE.TorusGeometry(30,5,5,100);//rueda del frisbee
       var sostieneRueda = new THREE.CylinderGeometry(2,2,35,100);
 
@@ -209,8 +210,7 @@
       var tubo16 = new THREE.Mesh(tuboRueda, blackMetal);
       var tubo17 = new THREE.Mesh(tuboRueda, blackMetal);
 
-      var torus = new THREE.Mesh( rueda, purpleMetal);
-      var torus1 = new THREE.Mesh( rueda, purpleMetal);
+      var torus = new THREE.Mesh( rueda1, purpleMetal);
 
       //Frisbee
       var tube = new THREE.Mesh(baseStructure, pinkMetal);
@@ -258,20 +258,20 @@
           //Rueda 
         tubo7.rotation.z=1; 
 
-        tubo8.position.y=63; tubo8.position.x = 0; tubo8.position.z = -18;
+        tubo8.position.y=57; tubo8.position.x = 0; tubo8.position.z = -18;
         tubo8.rotation.z=2;
 
-        tubo10.position.y=43; tubo10.position.x = -40; tubo10.position.z = -18;
+        tubo10.position.y=37; tubo10.position.x = -40; tubo10.position.z = -18;
         tubo10.rotation.z=-1;
 
-        tubo12.position.y=63; tubo12.position.x = -40; tubo12.position.z = -18;
+        tubo12.position.y=57; tubo12.position.x = -40; tubo12.position.z = -18;
         tubo12.rotation.z=-2;          
         
-        tubo14.position.y=73; tubo14.position.x = -20; tubo14.position.z = -18;
+        tubo14.position.y=67; tubo14.position.x = -20; tubo14.position.z = -18;
 
-        tubo16.position.y=27; tubo16.position.x = -20; tubo16.position.z = -18;
+        tubo16.position.y=22; tubo16.position.x = -20; tubo16.position.z = -18;
 
-        torus.position.y=53; torus.position.x = -20; torus.position.z = -18;
+        torus.position.y=47; torus.position.x = -20; torus.position.z = -18;
 
         //Frisbee
         tube.rotation.x = 60;
