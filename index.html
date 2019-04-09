@@ -143,7 +143,8 @@
       var sostiene2 = new THREE.CylinderGeometry(3,10,20,100);//union entre el brazo y el circulo
       var rueda1 = new THREE.TorusGeometry(60,5,5,100);//rueda de la rueda
       var rueda = new THREE.TorusGeometry(30,5,5,100);//rueda del frisbee
-      var sostieneRueda = new THREE.CylinderGeometry(2,2,35,100);
+      var sostieneRueda = new THREE.CylinderGeometry(2,2,35,100);//tubos que sostienen la rueda de la rueda
+      var seats = new THREE.TorusGeometry(35,2,5,100);//rueda del frisbee
 
       // create a Lambert material
       var LambertMaterial = new THREE.MeshLambertMaterial({
@@ -226,6 +227,7 @@
       var topBase2 = new THREE.Mesh(baseFrisbee, yellowMetal);
       var tube3 = new THREE.Mesh(baseStructure, pinkMetal);
       var tube4 = new THREE.Mesh(baseStructure, pinkMetal);
+      var asientos = new THREE.Mesh(seats, pinkMetal);
 
       // add the group to the scene
       renderer.setSize(window.innerWidth, window.innerHeight);
@@ -350,6 +352,10 @@
         tube4.position.z = 145;
         tube4.position.x = -75;
         tube4.position.y = 36;
+        asientos.position.x = -26;
+        asientos.position.y = 5;
+        asientos.position.z = 165;
+        asientos.rotation.x = 190;
        
       // add to the scene
       scene.add(pointLight);
@@ -385,6 +391,9 @@
       frisbee.add(tube);
       frisbee.add(topBase);
       frisbee.add(tube2);
+      frisbee.add(topBase2);
+      frisbee.add(tube3);
+      frisbee.add(tube4);
       frisbee.position.z = 50;
       frisbeeTube = new THREE.Object3D();
       frisbeeTube.add(rotatingt);
@@ -400,10 +409,10 @@
       frisbeeTube.add(holdCircle2);
       frisbeeTube.add(holdCircle3);
       frisbeeTube.add(holdCircle4);
+      frisbeeTube.add(asientos);
       frisbee.add(frisbeeTube);
-      frisbee.add(topBase2);
-      frisbee.add(tube3);
-      frisbee.add(tube4);
+      
+      
 
       // add to the scene
       scene.add(pointLight2);
