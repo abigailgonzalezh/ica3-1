@@ -58,7 +58,7 @@
           case 87:  /* W was pressed */
             //zpos= (zpos-(0.8*Math.cos(ypos))); 
             //xpos= (xpos-(0.8*Math.sin(ypos)));   
-            camera.position.y += 2;                       
+            camera.position.y +=2;                       
             break;
           case 83:  /* S was pressed */
             //zpos= (zpos+(0.8*Math.cos(ypos)));
@@ -66,7 +66,7 @@
             camera.position.y -= 2;                                                
             break;
           case 68:  /* D was pressed */
-            ypos -= 0.05;         
+            ypos -= 0.05;             
             break;
           case 65:  /* A was pressed */
             ypos += 0.05;         
@@ -139,6 +139,8 @@
       var rotatingTube = new THREE.CylinderGeometry(5,5,40,100);
       var rotatingBase = new THREE.BoxGeometry(20,2,20);
       var rotatingSupport = new THREE.CylinderGeometry(2,2,7,100);
+      var rueda = new THREE.TorusGeometry( 40, 5, 16, 100 );  
+
 
       // create a Lambert material
       var LambertMaterial = new THREE.MeshLambertMaterial({
@@ -158,7 +160,12 @@
       var blueMetal = new THREE.MeshLambertMaterial ({map: THREE.ImageUtils.loadTexture("blueMetal.jpg")});
       var yellowMetal = new THREE.MeshLambertMaterial ({map: THREE.ImageUtils.loadTexture("yellowMetal.jpg")});
       var redMetal = new THREE.MeshLambertMaterial ({map: THREE.ImageUtils.loadTexture("redMetal.jpg")});
+      var purpleMetal = new THREE.MeshLambertMaterial ({map: THREE.ImageUtils.loadTexture("purpleMetal.jpg")});
 
+      todo = new THREE.Object3D();
+      aro = new THREE.Object3D();
+      estructura = new THREE.Object3D();
+      
       var base = new THREE.Mesh(floor, pasto);
 
       var tubo = new THREE.Mesh(baseStructure, metal);
@@ -170,17 +177,6 @@
       var tubo6 = new THREE.Mesh(tuboRueda, blackMetal);
       var tubo7 = new THREE.Mesh(tuboRueda, blackMetal);
 
-
-      //Frisbee
-      var tube = new THREE.Mesh(baseStructure, pinkMetal);
-      var topBase = new THREE.Mesh(baseFrisbee, yellowMetal);
-      var tube2 = new THREE.Mesh(baseStructure, pinkMetal);
-      var rotatingt = new THREE.Mesh(rotatingTube, blueMetal);
-      var rotatingb = new THREE.Mesh(rotatingBase, blueMetal);
-      var supportTube = new THREE.Mesh(rotatingSupport, yellowMetal);
-      var supportTube2 = new THREE.Mesh(rotatingSupport, yellowMetal);
-      var supportTube3 = new THREE.Mesh(rotatingSupport, yellowMetal);
-      
       var tubo8 = new THREE.Mesh(tuboRueda, blackMetal);
       var tubo9 = new THREE.Mesh(tuboRueda, blackMetal);
 
@@ -193,6 +189,19 @@
       var tubo15 = new THREE.Mesh(tuboRueda, blackMetal);
       var tubo16 = new THREE.Mesh(tuboRueda, blackMetal);
       var tubo17 = new THREE.Mesh(tuboRueda, blackMetal);
+
+      var torus = new THREE.Mesh( rueda, purpleMetal);
+      var torus1 = new THREE.Mesh( rueda, purpleMetal);
+
+      //Frisbee
+      var tube = new THREE.Mesh(baseStructure, pinkMetal);
+      var topBase = new THREE.Mesh(baseFrisbee, yellowMetal);
+      var tube2 = new THREE.Mesh(baseStructure, pinkMetal);
+      var rotatingt = new THREE.Mesh(rotatingTube, blueMetal);
+      var rotatingb = new THREE.Mesh(rotatingBase, blueMetal);
+      var supportTube = new THREE.Mesh(rotatingSupport, yellowMetal);
+      var supportTube2 = new THREE.Mesh(rotatingSupport, yellowMetal);
+      var supportTube3 = new THREE.Mesh(rotatingSupport, yellowMetal);
 
       // add the group to the scene
       renderer.setSize(window.innerWidth, window.innerHeight);
@@ -210,6 +219,7 @@
 
       base.position.y=-10; base.position.x = 0; base.position.z = 15;
 
+        //RUEDA BASE
         tubo.rotation.z = 60;
         tubo2.rotation.z = -60;
         tubo2.position.x = -42;
@@ -224,10 +234,26 @@
         tubo5.position.x = -42;
 
         tubo6.position.y=40; tubo6.position.x = 0; tubo6.position.z = -18;
-        tubo7.position.y=40; tubo7.position.x = 0; tubo7.position.z = -31; 
         tubo6.rotation.z=1;
-        tubo7.rotation.z=1;  
+
+          //Rueda 
+        tubo7.rotation.z=1; 
+
+        tubo8.position.y=63; tubo8.position.x = 0; tubo8.position.z = -18;
+        tubo8.rotation.z=2;
+
+        tubo10.position.y=43; tubo10.position.x = -40; tubo10.position.z = -18;
+        tubo10.rotation.z=-1;
+
+        tubo12.position.y=63; tubo12.position.x = -40; tubo12.position.z = -18;
+        tubo12.rotation.z=-2;          
         
+        tubo14.position.y=73; tubo14.position.x = -20; tubo14.position.z = -18;
+
+        tubo16.position.y=27; tubo16.position.x = -20; tubo16.position.z = -18;
+
+        torus.position.y=53; torus.position.x = -20; torus.position.z = -18;
+
         //Frisbee
         tube.rotation.x = 60;
         tube.position.z = 85;
@@ -261,31 +287,6 @@
         supportTube3.position.z = 172;
         supportTube3.rotation.x = -60;
        
-
-        
-        tubo7.rotation.z=1; 
-
-        tubo8.position.y=60; tubo8.position.x = 0; tubo8.position.z = -18;
-        tubo9.position.y=60; tubo9.position.x = 0; tubo9.position.z = -31; 
-        tubo8.rotation.z=2;
-        tubo9.rotation.z=2;
-
-        tubo10.position.y=40; tubo10.position.x = -40; tubo10.position.z = -18;
-        tubo11.position.y=40; tubo11.position.x = -40; tubo11.position.z = -31; 
-        tubo10.rotation.z=-1;
-        tubo11.rotation.z=-1; 
-
-        tubo12.position.y=60; tubo12.position.x = -40; tubo12.position.z = -18;
-        tubo13.position.y=60; tubo13.position.x = -40; tubo13.position.z = -31; 
-        tubo12.rotation.z=-2;
-        tubo13.rotation.z=-2;           
-        
-        tubo14.position.y=70; tubo14.position.x = -20; tubo14.position.z = -18;
-        tubo15.position.y=70; tubo15.position.x = -20; tubo15.position.z = -31; 
-
-        tubo16.position.y=25; tubo16.position.x = -20; tubo16.position.z = -18;
-        tubo17.position.y=25; tubo17.position.x = -20; tubo17.position.z = -31; 
-      
       // add to the scene
       scene.add(pointLight);
 
@@ -295,7 +296,6 @@
       pointLight2.position.z = 300;
       scene.add(pointLight2);
 
-      estructura = new THREE.Object3D();
       estructura.add(tubo);
       estructura.add(tubo2);
       estructura.add(tubo3);
@@ -303,20 +303,18 @@
       estructura.add(tubo5);
       estructura.position.y=35;
 
-      aro = new THREE.Object3D();
       aro.add(tubo6);
-      aro.add(tubo7);
       aro.add(tubo8);
-      aro.add(tubo9);
       aro.add(tubo10);
-      aro.add(tubo11);
       aro.add(tubo12);
-      aro.add(tubo13);
       aro.add(tubo14);
-      aro.add(tubo15);
       aro.add(tubo16);
-      aro.add(tubo17);
+      aro.add(torus);
       aro.position.y+=35;
+      aro.position.z=-5 ;
+
+      todo.add(estructura);
+      todo.add(aro);
 
       //Frisbee
       frisbee = new THREE.Object3D();
@@ -334,8 +332,7 @@
       // add to the scene
       scene.add(pointLight2);
       scene.add(base); 
-      scene.add(estructura);
-      scene.add(aro);
+      scene.add(todo);
       scene.add(frisbee);
       scene.add(frisbeeTube);
 
@@ -349,9 +346,9 @@
         camera.rotation.y = ypos; 
 
         tubo3.rotation.y += 0.01;
-        //aro.rotation.z+=0.01;
+        //todo.rotation.z+=0.01;
         //frisbeeTube.rotation.x += 0.01;
-        //  aro.rotation.z +=0.01;
+        //aro.rotation.z +=0.01;
 
         renderer.render(scene, camera);
       };
