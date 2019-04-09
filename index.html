@@ -196,6 +196,8 @@
       var frisbeeCircle = new THREE.Mesh(rueda, yellowMetal);
       var holdCircle = new THREE.Mesh(sostieneRueda, blueMetal);
       var holdCircle2 = new THREE.Mesh(sostieneRueda, blueMetal);
+      var holdCircle3 = new THREE.Mesh(sostieneRueda, blueMetal);
+      var holdCircle4 = new THREE.Mesh(sostieneRueda, blueMetal);
       
       var tubo8 = new THREE.Mesh(tuboRueda, blackMetal);
       var tubo9 = new THREE.Mesh(tuboRueda, blackMetal);
@@ -327,6 +329,14 @@
         holdCircle2.position.y = 18;
         holdCircle2.position.z = 165;
         holdCircle2.rotation.z = -70;
+        holdCircle3.position.x = -25;
+        holdCircle3.position.y = 20;
+        holdCircle3.position.z = 180;
+        holdCircle3.rotation.x = -70;
+        holdCircle4.position.x = -25;
+        holdCircle4.position.y = 16;
+        holdCircle4.position.z = 148;
+        holdCircle4.rotation.x = 70;
 
 
        
@@ -377,6 +387,8 @@
       frisbeeTube.add(frisbeeCircle);
       frisbeeTube.add(holdCircle);
       frisbeeTube.add(holdCircle2);
+      frisbeeTube.add(holdCircle3);
+      frisbeeTube.add(holdCircle4);
       frisbee.add(frisbeeTube);
 
       // add to the scene
