@@ -134,7 +134,7 @@
       var floor = new THREE.BoxGeometry( 500, 10, 500 );
       var baseStructure = new THREE.CylinderGeometry(5,5,100,100);
       var tuboAcostado = new THREE.CylinderGeometry(10,10,60,100);
-      var tuboRueda = new THREE.CylinderGeometry(2,2,30,30);
+      var tuboRueda = new THREE.CylinderGeometry(10,1,70);
       var baseFrisbee = new THREE.BoxGeometry(40,10,70);//coso amarillo que esta hasta arriba
       var rotatingTube = new THREE.CylinderGeometry(5,5,80,100);//tubo azul que es la base para que rote
       var rotatingBase = new THREE.BoxGeometry(20,2,20);//base abajo del rotating tube
@@ -251,12 +251,10 @@
         tubo5.position.z = -48;
         tubo5.rotation.z = -60;
         tubo5.position.x = -42;
-
+        
+        //Rueda 
         tubo6.position.y=40; tubo6.position.x = 0; tubo6.position.z = -18;
         tubo6.rotation.z=1;
-
-          //Rueda 
-        tubo7.rotation.z=1; 
 
         tubo8.position.y=57; tubo8.position.x = 0; tubo8.position.z = -18;
         tubo8.rotation.z=2;
@@ -268,7 +266,8 @@
         tubo12.rotation.z=-2;          
         
         tubo14.position.y=67; tubo14.position.x = -20; tubo14.position.z = -18;
-
+        tubo14.rotation.z=-(3.1416);
+        
         tubo16.position.y=22; tubo16.position.x = -20; tubo16.position.z = -18;
 
         torus.position.y=47; torus.position.x = -20; torus.position.z = -18;
