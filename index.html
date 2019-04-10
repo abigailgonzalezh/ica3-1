@@ -368,6 +368,10 @@
       frisbeeClaw.add(frisbeeDonut);
       frisbee.add(frisbeeClaw);
       //Colocacion de objetos del frisbee----------------------------------------------------------------------------------
+      //Movimiento del frisbee----------------------------------------------------------------------------------------------
+      frisbee.position.x = 50;
+      frisbee.position.y = 45;
+      frisbee.position.z = 150;
       //Base---------------------------------------------------------------------------------------------------------------
       tube.rotation.x = 60; tube.position.y = -4; tube.position.z = -40;
       tube2.rotation.x = -60; tube2.position.y = -4; tube2.position.z = 40;
@@ -388,14 +392,10 @@
       holdCircle.rotation.z = 70; holdCircle.position.x = -45; holdCircle.position.y = -30;
       holdCircle2.rotation.z = -70; holdCircle2.position.x = -75; holdCircle2.position.y = -30;
       holdCircle3.rotation.x = 70; holdCircle3.position.x = -60; holdCircle3.position.y = -30; holdCircle3.position.z = -14;
-      holdCircle4.rotation.x = -70; holdCircle4.position.x = -60; holdCircle4.position.y = -30; holdCircle4.position.z = 16;
+      holdCircle4.rotation.x = -70; holdCircle4.position.x = -60; holdCircle4.position.y = -28; holdCircle4.position.z = 14;
       frisbeeDonut.position.y = 10;
       //Brazo---------------------------------------------------------------------------------------------------------------
       frisbeeArm.position.x = -60; frisbeeArm.position.y = 20;
-      //Movimiento del frisbee----------------------------------------------------------------------------------------------
-      frisbee.position.x = 50;
-      frisbee.position.y = 45;
-      frisbee.position.z = 150;
       //Agrego al scene frisbee----------------------------------------------------------------------------------------------
       scene.add(frisbee);
  
@@ -447,6 +447,7 @@
         silla3.rotation.z-=0.01;
         silla4.rotation.z-=0.01;
         //frisbeeClaw.rotation.x += 0.01;
+        //frisbeeDonut.rotation.y += 0.01;
         rotatingt.rotation.x += 0.01;
         //rotatingb.rotation.x += 0.01;
         renderer.render(scene, camera);
