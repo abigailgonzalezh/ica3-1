@@ -173,6 +173,13 @@
       todo = new THREE.Object3D();
       aro = new THREE.Object3D();
       estructura = new THREE.Object3D();
+
+    //Aqui declaro mis grupos del frisbee----------------------------------------------------------------------------------------------
+    //Frisbee
+      frisbee = new THREE.Object3D();
+      frisbeeTube = new THREE.Object3D();
+      frisbeeRot = new THREE.Object3D();
+      frisbeeBase = new THREE.Object3D();
       
       var base = new THREE.Mesh(floor, pasto);
 
@@ -186,22 +193,58 @@
 
 
       //Frisbee
+      //Base del frisbe--------------------------------------------------------------------
       var tube = new THREE.Mesh(baseStructure, pinkMetal);
       var topBase = new THREE.Mesh(baseFrisbee, yellowMetal);
       var tube2 = new THREE.Mesh(baseStructure, pinkMetal);
+      var topBase2 = new THREE.Mesh(baseFrisbee, yellowMetal);
+      var tube3 = new THREE.Mesh(baseStructure, pinkMetal);
+      var tube4 = new THREE.Mesh(baseStructure, pinkMetal);
       var rotatingt = new THREE.Mesh(rotatingTube, blueMetal);
       var rotatingb = new THREE.Mesh(rotatingBase, blueMetal);
       var supportTube = new THREE.Mesh(rotatingSupport, yellowMetal);
       var supportTube2 = new THREE.Mesh(rotatingSupport, yellowMetal);
       var supportTube3 = new THREE.Mesh(rotatingSupport, yellowMetal);
       var supportTube4 = new THREE.Mesh(rotatingSupport, yellowMetal);
-      var frisbeeArm = new THREE.Mesh(sostiene, pinkMetal);
+      frisbeeBase.add(tube);
+      frisbeeBase.add(topBase);
+      frisbeeBase.add(tube2);
+      frisbeeBase.add(topBase2);
+      frisbeeBase.add(tube3);
+      frisbeeBase.add(tube4);
+      frisbeeBase.add(rotatingt);
+      frisbeeBase.add(rotatingb);
+      frisbeeBase.add(supportTube);
+      frisbeeBase.add(supportTube2);
+      frisbeeBase.add(supportTube3);
+      frisbeeBase.add(supportTube4);
+       //Dona frisbee---------------------------------------------------------------------
       var frisbeeHanlde = new THREE.Mesh(sostiene2, pinkMetal);
       var frisbeeCircle = new THREE.Mesh(rueda, yellowMetal);
       var holdCircle = new THREE.Mesh(sostieneRueda, blueMetal);
       var holdCircle2 = new THREE.Mesh(sostieneRueda, blueMetal);
       var holdCircle3 = new THREE.Mesh(sostieneRueda, blueMetal);
       var holdCircle4 = new THREE.Mesh(sostieneRueda, blueMetal);
+      var asientos = new THREE.Mesh(seats, pinkMetal);
+      frisbeeRot.add(frisbeeHanlde);
+      frisbeeRot.add(frisbeeCircle);
+      frisbeeRot.add(holdCircle);
+      frisbeeRot.add(holdCircle2);
+      frisbeeRot.add(holdCircle3);
+      frisbeeRot.add(holdCircle4);
+      frisbeeRot.add(asientos);
+      //frisbeeRot.position.z = -50;
+      //Brazo del frisbee--------------------------------------------------------------------
+      var frisbeeArm = new THREE.Mesh(sostiene, pinkMetal);
+      frisbeeTube.add(frisbeeArm);
+      frisbeeTube.add(frisbeeRot);
+      //frisbeeTube.position.z = -50;
+      //Agrego todos los gpos a frisbee--------------------------------------------------
+      frisbee.add(frisbeeBase);
+      frisbee.add(frisbeeTube);
+      frisbee.add(frisbeeRot);
+      frisbee.position.x = 10;
+      frisbee.position.z = 40;
       
       var tubo8 = new THREE.Mesh(tuboRueda, blackMetal);
       var tubo10 = new THREE.Mesh(tuboRueda, blackMetal);
@@ -224,20 +267,8 @@
       var cube9 = new THREE.Mesh(asiento, yellowMetal );
       var cube10 = new THREE.Mesh(asiento, yellowMetal );
       var cube11 = new THREE.Mesh(asiento, yellowMetal );
-
-      //Frisbee
-      var tube = new THREE.Mesh(baseStructure, pinkMetal);
-      var topBase = new THREE.Mesh(baseFrisbee, yellowMetal);
-      var tube2 = new THREE.Mesh(baseStructure, pinkMetal);
-      var rotatingt = new THREE.Mesh(rotatingTube, blueMetal);
-      var rotatingb = new THREE.Mesh(rotatingBase, blueMetal);
-      var supportTube = new THREE.Mesh(rotatingSupport, yellowMetal);
-      var supportTube2 = new THREE.Mesh(rotatingSupport, yellowMetal);
-      var supportTube3 = new THREE.Mesh(rotatingSupport, yellowMetal);
-      var topBase2 = new THREE.Mesh(baseFrisbee, yellowMetal);
-      var tube3 = new THREE.Mesh(baseStructure, pinkMetal);
-      var tube4 = new THREE.Mesh(baseStructure, pinkMetal);
-      var asientos = new THREE.Mesh(seats, pinkMetal);
+      
+      
 
       // add the group to the scene
       renderer.setSize(window.innerWidth, window.innerHeight);
@@ -310,6 +341,7 @@
         torus.position.y=47; torus.position.x = -20; torus.position.z = -18;
 
         //Frisbee
+        //Base del frisbee
         tube.rotation.x = 60;
         tube.position.z = 85;
         tube.position.x = 20;
@@ -321,56 +353,6 @@
         tube2.position.z = 145;
         tube2.position.x = 20;
         tube2.position.y = 36;
-        rotatingt.position.x = -26;
-        rotatingt.position.y = 83;
-        rotatingt.position.z = 165;
-        rotatingt.rotation.x = 180;
-        rotatingt.rotation.z = 300;
-        rotatingb.position.x = -26;
-        rotatingb.position.y = 77;
-        rotatingb.position.z = 165;
-        supportTube.position.x = -32;
-        supportTube.position.y = 80;
-        supportTube.position.z = 162;
-        supportTube.rotation.x = 60;
-        supportTube2.position.x = -20;
-        supportTube2.position.y = 80;
-        supportTube2.position.z = 162;
-        supportTube2.rotation.x = 60;
-        supportTube3.position.x = -32;
-        supportTube3.position.y = 80;
-        supportTube3.position.z = 168.5;
-        supportTube3.rotation.x = -60;
-        supportTube4.position.x = -20;
-        supportTube4.position.y = 80;
-        supportTube4.position.z = 168.5;
-        supportTube4.rotation.x = -60;
-        frisbeeArm.position.x = -26;
-        frisbeeArm.position.y = 57;
-        frisbeeArm.position.z = 165;
-        frisbeeHanlde.position.x = -26;
-        frisbeeHanlde.position.y = 30;
-        frisbeeHanlde.position.z = 165;
-        frisbeeCircle.position.x = -26;
-        frisbeeCircle.position.y = 5;
-        frisbeeCircle.position.z = 165;
-        frisbeeCircle.rotation.x = 190;
-        holdCircle.position.x = -10;
-        holdCircle.position.y = 18;
-        holdCircle.position.z = 165;
-        holdCircle.rotation.z = 70;
-        holdCircle2.position.x = -42;
-        holdCircle2.position.y = 18;
-        holdCircle2.position.z = 165;
-        holdCircle2.rotation.z = -70;
-        holdCircle3.position.x = -25;
-        holdCircle3.position.y = 20;
-        holdCircle3.position.z = 180;
-        holdCircle3.rotation.x = -70;
-        holdCircle4.position.x = -25;
-        holdCircle4.position.y = 16;
-        holdCircle4.position.z = 148;
-        holdCircle4.rotation.x = 70;
         topBase2.position.z = 115;
         topBase2.position.x = -86;
         topBase2.position.y = 82;
@@ -382,9 +364,68 @@
         tube4.position.z = 145;
         tube4.position.x = -75;
         tube4.position.y = 36;
+
+        //Brazo del frisbee
+        rotatingt.position.x = -26;
+        rotatingt.position.y = 83;
+        rotatingt.position.z = 115;
+        rotatingt.rotation.x = 180;
+        rotatingt.rotation.z = 300;
+
+        rotatingb.position.x = -26;
+        rotatingb.position.y = 77;
+        rotatingb.position.z = 116;
+        
+        supportTube.position.x = -32;
+        supportTube.position.y = 80;
+        supportTube.position.z = 111;
+        supportTube.rotation.x = 60;
+        supportTube2.position.x = -20;
+        supportTube2.position.y = 80;
+        supportTube2.position.z = 111;
+        supportTube2.rotation.x = 60;
+        supportTube3.position.x = -32;
+        supportTube3.position.y = 80;
+        supportTube3.position.z = 118;
+        supportTube3.rotation.x = -60;
+        supportTube4.position.x = -20;
+        supportTube4.position.y = 80;
+        supportTube4.position.z = 118;
+        supportTube4.rotation.x = -60;
+
+        frisbeeArm.position.x = -26;
+        frisbeeArm.position.y = 57;
+        frisbeeArm.position.z = 116;
+
+        frisbeeHanlde.position.x = -26;
+        frisbeeHanlde.position.y = 30;
+        frisbeeHanlde.position.z = 116;
+        //Circulo giratorio del frisbee
+        frisbeeCircle.position.x = -26;
+        frisbeeCircle.position.y = 5;
+        frisbeeCircle.position.z = 116;
+        frisbeeCircle.rotation.x = 190;
+
+        holdCircle.position.x = -8;
+        holdCircle.position.y = 17;
+        holdCircle.position.z = 115;
+        holdCircle.rotation.z = 70;
+        holdCircle2.position.x = -40;
+        holdCircle2.position.y = 19;
+        holdCircle2.position.z = 115;
+        holdCircle2.rotation.z = -70;
+        holdCircle3.position.x = -25;
+        holdCircle3.position.y = 20;
+        holdCircle3.position.z = 130;
+        holdCircle3.rotation.x = -70;
+        holdCircle4.position.x = -25;
+        holdCircle4.position.y = 16;
+        holdCircle4.position.z = 100;
+        holdCircle4.rotation.x = 70;
+
         asientos.position.x = -26;
         asientos.position.y = 5;
-        asientos.position.z = 165;
+        asientos.position.z = 116;
         asientos.rotation.x = 190;
        
       // add to the scene
@@ -431,45 +472,11 @@
       todo.add(estructura);
       todo.add(aro);
 
-      //Frisbee
-      frisbee = new THREE.Object3D();
-      frisbeeTube = new THREE.Object3D();
-      frisbeeRot = new THREE.Object3D();
-
-      frisbee.add(tube);
-      frisbee.add(topBase);
-      frisbee.add(tube2);
-      frisbee.add(topBase2);
-      frisbee.add(tube3);
-      frisbee.add(tube4);
-      frisbee.add(frisbeeTube);
-      frisbee.add(frisbeeRot);
-      frisbee.position.z = 50;
       
       
-      frisbeeTube.add(rotatingt);
-      frisbeeTube.add(rotatingb);
-      frisbeeTube.add(supportTube);
-      frisbeeTube.add(supportTube2);
-      frisbeeTube.add(supportTube3);
-      frisbeeTube.add(supportTube4);
-      frisbeeTube.add(frisbeeArm);
-      frisbeeTube.add(frisbeeHanlde);
-      frisbeeTube.add(frisbeeCircle);
-      frisbeeTube.add(holdCircle);
-      frisbeeTube.add(holdCircle2);
-      frisbeeTube.add(holdCircle3);
-      frisbeeTube.add(holdCircle4);
-      frisbeeTube.add(asientos);
+      
 
-      frisbeeRot.add(frisbeeHanlde);
-      frisbeeRot.add(frisbeeCircle);
-      frisbeeRot.add(holdCircle);
-      frisbeeRot.add(holdCircle2);
-      frisbeeRot.add(holdCircle3);
-      frisbeeRot.add(holdCircle4);
-      frisbeeRot.add(asientos);
-      frisbeeRot.position.z = -50;
+      
       
       
 
@@ -481,7 +488,7 @@
       scene.add(base); 
       scene.add(todo);
       scene.add(frisbee);
-      scene.add(frisbeeTube);
+      //scene.add(frisbeeTube);
 
       // set the background color
       renderer.setClearColor(0x2271B3, 1);
@@ -494,9 +501,9 @@
 
         tubo3.rotation.y += 0.01;
         //todo.rotation.z+=0.01;
+        //frisbeeTube.rotation.x += 0.01;
         //frisbeeRot.rotation.y += 0.01;
         //aro.rotation.z +=0.01;
-        //rotatingt.rotation.x += 0.01;
 
         renderer.render(scene, camera);
       };
