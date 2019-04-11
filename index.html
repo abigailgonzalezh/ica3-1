@@ -348,7 +348,8 @@
     caballo1.add(cola1); 
     caballo1.add(cabeza1);
     caballo1.position.y+=10; 
-    caballo1.position.z+=30;
+    caballo1.position.z -=32;
+    caballo1.position.x+=23;
     //scene.add(caballo1);
 
 
@@ -371,8 +372,9 @@
     caballo2.add(patas14);  
     caballo2.add(cola2); 
     caballo2.add(cabeza2);
-    caballo2.position.y+=20; 
-    caballo2.position.z+=50;
+    caballo2.position.y+=20;
+    caballo2.position.x += 100; 
+    caballo2.position.z+=40;
     //scene.add(caballo2);
 
     //Caballo 3----------------------------------------------------------------------------------------------------------
@@ -394,8 +396,9 @@
     caballo3.add(patas16);  
     caballo3.add(cola3); 
     caballo3.add(cabeza3);
-    caballo3.position.y+=30; 
-    caballo3.position.z+=70;
+    caballo3.position.y+=10; 
+    caballo3.position.z+=72;
+    caballo3.position.x+=23;
     //scene.add(caballo3);
 
     //Caballo 4---------------------------------------------------------------------------------------------------------------
@@ -417,22 +420,24 @@
     caballo4.add(patas18);  
     caballo4.add(cola4); 
     caballo4.add(cabeza4);
-    caballo4.position.y+=40; 
-    caballo4.position.z+=90;
+    caballo4.position.y+=20; 
+    caballo4.position.z+=25;
     //scene.add(caballo4);
     
     //Grupo de caballos -------------------------------------------------------------------------------------------------------
     caballos1.add(caballo1);
     caballos1.add(caballo3);
+    caballos1.position.x = 130;
     scene.add(caballos1);
 
     caballos2.add(caballo2);
     caballos2.add(caballo4);
+    caballos2.position.x = 100;
     scene.add(caballos2);
 
     //Objetos de carpa -----------------------------------------------------------------------------------------------------------
     var techo = new THREE.ConeGeometry(60,40,100);
-    var tuboCarrusel = new THREE.CylinderGeometry(3,3,43,100);
+    var tuboCarrusel = new THREE.CylinderGeometry(1,1,43,100);
     var piso = new THREE.CylinderGeometry(60,60,3,100);
     //Creacion del techo ----------------------------------------------------------------------------------------------------------
     var roof = new THREE.Mesh(techo, pinkMetal);
@@ -441,7 +446,7 @@
     //scene.add(roof);
     //Creacion de los tubos---------------------------------------------------------------------------------------------------------
     var carruselTubo = new THREE.Mesh(tuboCarrusel, purpleMetal);
-    carruselTubo.position.x += 50; carruselTubo.position.y +=20; carruselTubo.position.z = 20;
+    carruselTubo.position.x += 50; carruselTubo.position.y +=20; carruselTubo.position.z += 20;
     carpa.add(carruselTubo);
     //scene.add(carruselTubo);
     var carruselTubo2 = new THREE.Mesh(tuboCarrusel, purpleMetal);
