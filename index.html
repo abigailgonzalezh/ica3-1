@@ -431,30 +431,40 @@
     scene.add(caballos2);
 
     //Objetos de carpa -----------------------------------------------------------------------------------------------------------
-    var techo = new THREE.ConeGeometry(80,40,100);
-    var tuboCarrusel = new THREE.CylinderGeometry(3,3,20,100);
-    var piso = new THREE.CylinderGeometry(80,80,3,100);
+    var techo = new THREE.ConeGeometry(60,40,100);
+    var tuboCarrusel = new THREE.CylinderGeometry(3,3,43,100);
+    var piso = new THREE.CylinderGeometry(60,60,3,100);
     //Creacion del techo ----------------------------------------------------------------------------------------------------------
     var roof = new THREE.Mesh(techo, pinkMetal);
-    roof.position.x += 3; roof.position.y += 40; roof.position.z = 0;
-    scene.add(roof);
+    roof.position.x += 3; roof.position.y += 60; roof.position.z = 0;
+    carpa.add(roof);
+    //scene.add(roof);
     //Creacion de los tubos---------------------------------------------------------------------------------------------------------
-    var carruselTubo = new THREE.Mesh(tuboCarrusel, yellowMetal);
-    carruselTubo.position.x += 5; carruselTubo.position.y +=5; carruselTubo.position.z = 0;
-    scene.add(carruselTubo);
+    var carruselTubo = new THREE.Mesh(tuboCarrusel, purpleMetal);
+    carruselTubo.position.x += 50; carruselTubo.position.y +=20; carruselTubo.position.z = 20;
+    carpa.add(carruselTubo);
+    //scene.add(carruselTubo);
     var carruselTubo2 = new THREE.Mesh(tuboCarrusel, purpleMetal);
-    carruselTubo2.position.x += 5; carruselTubo2.position.y += 5; carruselTubo2.position.z += 5;
-    scene.add(carruselTubo2);
+    carruselTubo2.position.x -= 50; carruselTubo2.position.y += 20; carruselTubo2.position.z += 5;
+    carpa.add(carruselTubo2);
+    //scene.add(carruselTubo2);
     var carruselTubo3 = new THREE.Mesh(tuboCarrusel, purpleMetal);
-    carruselTubo3.position.x += 5; carruselTubo3.position.y += 3; carruselTubo2.position.z += 3;
-    scene.add(carruselTubo4);
+    carruselTubo3.position.x += 3; carruselTubo3.position.y += 20; carruselTubo3.position.z -= 52;
+    carpa.add(carruselTubo3);
+    //scene.add(carruselTubo4);
     var carruselTubo4 = new THREE.Mesh(tuboCarrusel, purpleMetal);
-    carruselTubo4.position.x += 5; carruselTubo4.position.y += 5; carruselTubo2.position.z += 4;
-    scene.add(carruselTubo4);
+    carruselTubo4.position.x += 3; carruselTubo4.position.y += 20; carruselTubo4.position.z += 52;
+    carpa.add(carruselTubo4);
+    //scene.add(carruselTubo4);
     //Creacion del piso ---------------------------------------------------------------------------------------------------------------
     var floorC = new THREE.Mesh(piso, pinkMetal);
-    floorC.position.x += 3; floorC.position.y += 20; floorC.position.z = 0;
-    scene.add(floorC);
+    floorC.position.x += 3; floorC.position.y -= 3; floorC.position.z = 0;
+    carpa.add(floorC);
+    //scene.add(floorC);
+    //Agregar el gpo carpa al scene-----------------------------------------------------------------------------------------------------
+    carpa.position.x = 150;
+    carpa.position.z = 20;
+    scene.add(carpa);
 
 
   
