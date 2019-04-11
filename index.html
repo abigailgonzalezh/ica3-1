@@ -333,9 +333,9 @@
     cuerpo1.position.y=0; cuerpo1.position.x=0; cuerpo1.position.z=0;
     cuerpo1.rotation.z=3.1416/2;
     var patas11 = new THREE.Mesh(patasCaballo, blueMetal);
-    patas11.position.y-=3 ; patas11.position.x-=4; cuerpo1.position.z=0;
+    patas11.position.y-=3 ; patas11.position.x-=4; patas11.position.z=0;
     var patas12 = new THREE.Mesh(patasCaballo, blueMetal);
-    patas12.position.y-=3 ; patas12.position.x+=4; cuerpo1.position.z=0;
+    patas12.position.y-=3 ; patas12.position.x+=4; patas11.position.z=0;
     var cola1 = new THREE.Mesh(colaCaballo, blueMetal);
     cola1.position.y+=3; cola1.position.x+=5; cola1.position.z=0;
     cola1.rotation.z=3*3.1416/4;
@@ -349,9 +349,18 @@
     caballo1.add(cabeza1);
     caballo1.position.y+=10; 
     caballo1.position.z+=30;
-    scene.add(caballo1);
+    scene.add(caballo1);new THREE.Mesh(colaCaballo, blueMetal);
 
-        //Caballo 1-----
+
+    //Caballo 2-----
+    var cuerpo2 = new THREE.Mesh(cuerpoCaballo, blueMetal);
+    cuerpo2.position.y = 0; cuerpo2.position.x = 0; cuerpo2.position.z = 0;
+    cuerpo2.rotation.z = 3.1416/2;
+    var patas13 = new THREE.Mesh(patasCaballo, blueMetal);
+    patas13.position.y -= 3; patas13.position.x -=4; patas13.position.z = 0;
+    var patas14 = new THREE.Mesh(patasCaballo, blueMetal);
+    patas14.position.y -= 3; patas14.position.x += 4; patas13.position.z = 0;
+    var cola2 = new THREE.Mesh(colaCaballo, blueMetal);
 
   
       //Frisbee------------------------------------------------------------------------------------------------------------
