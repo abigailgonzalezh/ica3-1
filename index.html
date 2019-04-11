@@ -348,8 +348,9 @@
     caballo1.add(cola1); 
     caballo1.add(cabeza1);
     caballo1.position.y+=10; 
-    caballo1.position.z -=32;
+    caballo1.position.z -=52;
     caballo1.position.x+=23;
+    caballo1.rotation.y=2*3.1416;
     //scene.add(caballo1);
 
 
@@ -374,7 +375,8 @@
     caballo2.add(cabeza2);
     caballo2.position.y+=20;
     caballo2.position.x += 100; 
-    caballo2.position.z+=40;
+    caballo2.position.z+=20;
+    caballo2.rotation.y=3*3.1416/2;
     //scene.add(caballo2);
 
     //Caballo 3----------------------------------------------------------------------------------------------------------
@@ -397,8 +399,9 @@
     caballo3.add(cola3); 
     caballo3.add(cabeza3);
     caballo3.position.y+=10; 
-    caballo3.position.z+=72;
+    caballo3.position.z+=52;
     caballo3.position.x+=23;
+    caballo3.rotation.y=3.1416;
     //scene.add(caballo3);
 
     //Caballo 4---------------------------------------------------------------------------------------------------------------
@@ -421,18 +424,20 @@
     caballo4.add(cola4); 
     caballo4.add(cabeza4);
     caballo4.position.y+=20; 
-    caballo4.position.z+=25;
+    caballo4.position.z+=5;
+    caballo4.rotation.y=3.1416/2;
     //scene.add(caballo4);
     
     //Grupo de caballos -------------------------------------------------------------------------------------------------------
     caballos1.add(caballo1);
     caballos1.add(caballo3);
-    caballos1.position.x = 130;
+    caballos1.position.x = -20;
+    caballos1.position.Z -= 50;
     scene.add(caballos1);
 
     caballos2.add(caballo2);
     caballos2.add(caballo4);
-    caballos2.position.x = 100;
+    caballos2.position.x -= 50;
     scene.add(caballos2);
 
     //Objetos de carpa -----------------------------------------------------------------------------------------------------------
@@ -442,6 +447,8 @@
     //Creacion del techo ----------------------------------------------------------------------------------------------------------
     var roof = new THREE.Mesh(techo, pinkMetal);
     roof.position.x += 3; roof.position.y += 60; roof.position.z = 0;
+    carpa.add(caballos1);
+    carpa.add(caballos2);
     carpa.add(roof);
     //scene.add(roof);
     //Creacion de los tubos---------------------------------------------------------------------------------------------------------
@@ -610,6 +617,10 @@
       var b=0.01;
       var c=1;
 
+      var d=0;
+      var e=1;
+      var f=1;
+
       var render = function() {
         requestAnimationFrame(render);
         camera.position.z = zpos; 
@@ -630,9 +641,21 @@
         b=0.01
         c=1;
         }
-        frisbeeClaw.rotation.x+=b;// Aqui ando trabajando
+        frisbeeClaw.rotation.x+=b;
         a+=c;  
-        frisbeeDonut.rotation.y+=0.01;  
+        frisbeeDonut.rotation.y+=0.01;
+        carpa.rotation.y+=0.005;
+        if(d==5){
+        e=0.125;
+        f=-0.125;
+        }
+        if(d==-5){
+        e=-0.125;
+        f=0.125;
+        }
+        d+=f;  
+        caballos1.position.y+=e; // Aqui ando trabajando 
+        caballos2.position.y+=f;
         renderer.render(scene, camera);
       };
       render();
