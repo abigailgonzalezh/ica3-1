@@ -311,6 +311,49 @@
 
       todo.add(estructura);
 
+    //Aqui declaro mis grupos del carrusel--------------------------------------------------------------------------------------------
+    caballo1 = new THREE.Object3D();
+    caballo2 = new THREE.Object3D();
+    caballo3 = new THREE.Object3D(); 
+    caballo4 = new THREE.Object3D();
+    caballos1 = new THREE.Object3D(); 
+    caballos2 = new THREE.Object3D(); 
+    carpa = new THREE.Object3D(); 
+    baseCarrusel = new THREE.Object3D(); 
+    todoCarrusel = new THREE.Object3D();
+
+    //Aqui declaro los caballos------------------------------------------------------------------------
+    var cuerpoCaballo = new THREE.CylinderGeometry(2,2,10,100); //Cuerpo del caballo
+    var patasCaballo = new THREE.BoxGeometry( 2,2,3); //Patas del caballo
+    var colaCaballo = new THREE.BoxGeometry( 2, 5,1); //Cola del caballo
+    var cabezaCaballo = new THREE.BoxGeometry( 2,2,2);//Cabeza del caballo
+
+    //Caballo 1-----
+    var cuerpo1 = new THREE.Mesh(cuerpoCaballo, blueMetal);
+    cuerpo1.position.y=0; cuerpo1.position.x=0; cuerpo1.position.z=0;
+    cuerpo1.rotation.z=3.1416/2;
+    var patas11 = new THREE.Mesh(patasCaballo, blueMetal);
+    patas11.position.y-=3 ; patas11.position.x-=4; cuerpo1.position.z=0;
+    var patas12 = new THREE.Mesh(patasCaballo, blueMetal);
+    patas12.position.y-=3 ; patas12.position.x+=4; cuerpo1.position.z=0;
+    var cola1 = new THREE.Mesh(colaCaballo, blueMetal);
+    cola1.position.y+=3; cola1.position.x+=5; cola1.position.z=0;
+    cola1.rotation.z=3*3.1416/4;
+    var cabeza1 = new THREE.Mesh(cabezaCaballo, purpleMetal);
+    cabeza1.position.y+=3; cabeza1.position.x-=5; cabeza1.position.z=0;
+
+    caballo1.add(cuerpo1);
+    caballo1.add(patas11);
+    caballo1.add(patas12);  
+    caballo1.add(cola1); 
+    caballo1.add(cabeza1);
+    caballo1.position.y+=10; 
+    caballo1.position.z+=30;
+    scene.add(caballo1);
+
+        //Caballo 1-----
+
+  
       //Frisbee------------------------------------------------------------------------------------------------------------
       //Base---------------------------------------------------------------------------------------------------------------
       var tube = new THREE.Mesh(baseStructure, pinkMetal);
@@ -331,7 +374,7 @@
       //Dona---------------------------------------------------------------------------------------------------------------
       var frisbeeCircle = new THREE.Mesh(rueda, yellowMetal);
       var holdCircle = new THREE.Mesh(sostieneRueda, blueMetal);
-      var holdCircle2 = new THREE.Mesh(sostieneRueda, blueMetal);
+      var holdCircle2= new THREE.Mesh(sostieneRueda, blueMetal);
       var holdCircle3 = new THREE.Mesh(sostieneRueda, blueMetal);
       var holdCircle4 = new THREE.Mesh(sostieneRueda, blueMetal);
       var asientos = new THREE.Mesh(seats, pinkMetal);
